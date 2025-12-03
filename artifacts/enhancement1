@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhancement 1 - Rikka Eng</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Rikka Eng</h1>
+        <h2>Computer Science ePortfolio</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="code-review.html">Code Review</a>
+            <a href="enhancement1.html">Enhancement 1: Software Design & Engineering</a>
+            <a href="enhancement2.html">Enhancement 2: Algorithms & Data Structures</a>
+            <a href="enhancement3.html">Enhancement 3: Databases</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="enhancement-header">
+            <h2>Enhancement One: Software Design and Engineering</h2>
+            
+            <div class="artifact-links">
+                <h3>Artifact Files</h3>
+                <ul>
+                    <li><a href="artifacts/Rikka_Eng___3-2_Milestone_Two__Enhancement_One__Software_Design_and_Engineering.docx" download>📄 Download Original Milestone Document</a></li>
+                    <li><a href="artifacts/enhancement1-travlr-fullstack.zip" download>📦 Download Full Stack Project (ZIP)</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="artifact-description">
+            <h3>Artifact Description</h3>
+            <p>
+                The artifact selected for this enhancement is the Travlr Getaways full-stack booking platform, 
+                originally developed in CS-465 (Full Stack Development) in fall 2024. This MEAN stack application 
+                (MongoDB, Express.js, Angular, Node.js) features both a customer-facing website for browsing 
+                travel destinations and an administrative interface for managing database content. The application 
+                implements server-side rendering via Handlebars templates, RESTful API endpoints, and MongoDB 
+                integration, representing a complete full-stack solution.
+            </p>
+        </section>
+
+        <section id="justification">
+            <h3>Justification for Inclusion</h3>
+            <p>
+                I selected this artifact because full-stack development represents the foundation of modern 
+                software engineering, integrating frontend, backend, databases, and deployment considerations. 
+                These skills are essential across industries—from logistics and healthcare to e-commerce and 
+                enterprise applications.
+            </p>
+
+            <h4>The Problem</h4>
+            <p>
+                The original templates were designed for exactly three static travel destinations. When the 
+                application was converted to use dynamic content from MongoDB, a critical layout flaw emerged: 
+                adding more than three trips caused images to overlap separator lines, created inconsistent 
+                whitespace, and degraded the professional appearance of the interface.
+            </p>
+            <p>
+                Additionally, the Angular admin interface contained a typo (<code>btnbtn-danger</code> instead 
+                of <code>btn btn-danger</code>) that rendered the Delete button as an unstyled element, and the 
+                default Bootstrap styling appeared dated and unprofessional.
+            </p>
+
+            <h4>The Solution</h4>
+            <p>
+                Through systematic debugging and investigation of the CSS cascade, I identified and resolved 
+                multiple issues:
+            </p>
+
+            <p><strong>Trip Display Fix:</strong></p>
+            <ul>
+                <li><strong>Float Containment Failure:</strong> Images used <code>float: right;</code> but parent 
+                    <code>&lt;li&gt;</code> containers couldn't contain floated children, causing height collapse. 
+                    Solution: Added <code>overflow: hidden;</code> to create a block formatting context.</li>
+                <li><strong>Inconsistent Padding:</strong> Different content lengths accumulated different amounts 
+                    of padding. Solution: Moved padding from individual <code>&lt;p&gt;</code> tags to uniform 
+                    <code>30px padding-bottom</code> on <code>&lt;li&gt;</code> containers.</li>
+            </ul>
+
+            <p><strong>Admin Interface Redesign:</strong></p>
+            <ul>
+                <li>Fixed the button typo</li>
+                <li>Implemented Material Design 3 principles: increased border radius (8px), subtle shadows, 
+                    proper letter-spacing</li>
+                <li>Established color hierarchy: solid blue for primary actions (Edit/Add), outlined red for 
+                    destructive actions (Delete)</li>
+                <li>Applied flexbox layouts to ensure equal card heights and bottom-aligned buttons regardless 
+                    of description length</li>
+            </ul>
+
+            <h4>Skills Demonstrated</h4>
+            <ul>
+                <li><strong>Problem Analysis:</strong> Root cause diagnosis in complex CSS cascades</li>
+                <li><strong>Frontend Engineering:</strong> Understanding CSS box model, float behavior, and 
+                    block formatting contexts</li>
+                <li><strong>Scalability Thinking:</strong> Recognizing when static designs fail with dynamic data</li>
+                <li><strong>Modern Design Principles:</strong> Applying Material Design 3 for professional, 
+                    cohesive interfaces</li>
+                <li><strong>Systematic Debugging:</strong> Hypothesis formation, testing, and incremental changes</li>
+            </ul>
+        </section>
+
+        <section id="reflection">
+            <h3>Reflection on the Enhancement Process</h3>
+
+            <h4>What I Learned</h4>
+            <p>
+                The primary lesson was that designs optimized for static content often fail catastrophically 
+                when connected to dynamic databases. Scalable UI must be considered from the start or carefully 
+                retrofitted later. I learned how CSS cascades through component hierarchies in Angular—making 
+                buttons align properly required understanding how flexbox properties flow through multiple DOM 
+                levels: Bootstrap columns, Angular component wrappers, card containers, and card bodies. Missing 
+                any link in this chain broke the layout.
+            </p>
+            <p>
+                I also gained practical experience with Material Design 3 principles, which provided a framework 
+                for intentional design decisions rather than arbitrary aesthetic choices. Understanding concepts 
+                like elevation, visual hierarchy, and spacing systems made the enhancement process more defensible 
+                and professional.
+            </p>
+
+            <h4>Challenges Faced</h4>
+            <p>
+                The primary technical challenge was overriding Bootstrap's opinionated defaults without affecting 
+                other parts of the application. Custom styles needed careful specificity management to take 
+                precedence appropriately.
+            </p>
+            <p>
+                The card alignment issue proved particularly frustrating—conceptually simple (make cards the same 
+                height) but technically complex due to nested container behavior. Buttons floated wherever 
+                description text ended, requiring coordinated CSS changes in both <code>trip-listing.css</code> 
+                and <code>trip-card.css</code>.
+            </p>
+            <p>
+                There was also a learning curve in articulating <em>why</em> design choices matter beyond 
+                aesthetics. Inconsistent button placements create cognitive friction for users scanning multiple 
+                cards. Recognizing and addressing these UX concerns represents the difference between functional 
+                code and professional software.
+            </p>
+
+            <h4>Course Outcomes Addressed</h4>
+            <p>
+                <strong>Outcome 2 - Professional-Quality Visual Communication:</strong> The layout issues 
+                compromised the application's professional appearance and organizational credibility. By ensuring 
+                consistent visual presentation across both customer and admin interfaces, I created a coherent, 
+                technically sound interface that adapts appropriately to dynamic content. The documented 
+                before/after improvements demonstrate my ability to communicate technical changes clearly.
+            </p>
+            <p>
+                <strong>Outcome 4 - Well-Founded Techniques, Skills & Tools:</strong> I employed established CSS 
+                principles (block formatting contexts, cascade, specificity) to diagnose root causes, researched 
+                and applied Material Design 3 standards, and implemented scalable solutions that function 
+                regardless of database size. The enhancement follows debugging best practices and delivers 
+                tangible value through improved usability and professionalism.
+            </p>
+            <p>
+                <strong>Outcome 3 - Design and Evaluate Computing Solutions:</strong> While this enhancement 
+                focused primarily on presentation layer improvements rather than algorithmic optimization, the 
+                overflow fix demonstrates evaluating solutions using computer science best practices while 
+                managing real-world design constraints. The solution addressed immediate problems while 
+                maintaining compatibility with the existing codebase and minimizing risk of introducing new bugs.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Rikka Eng | <a href="https://github.com/[your-username]">GitHub</a></p>
+    </footer>
+</body>
+</html>
