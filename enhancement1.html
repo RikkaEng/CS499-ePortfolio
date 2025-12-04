@@ -77,25 +77,33 @@
                 Through debugging, file searching, and general understanding of the full-stack environment, I 
                 identified a few CSS issues that caused this problem.
             </p>
-                <ul>
+            
+            <ul>
                 <li><strong>Issue 1: Float Containment Failure:</strong> The images used <code>float: right;</code> 
                     to position themselves, but the parent <code>&lt;li&gt;</code> containers couldn't properly contain 
                     these floated children. This caused container height collapse and overlapping content as more items 
                     were added.</li>
-                </ul>
+            </ul>
+            
+            <p style="margin-left: 20px;">
                 <strong>Solution:</strong> I added <code>overflow: hidden;</code> to <code>#sites li</code>, which 
-                    created a block formatting context that forces the parent container to acknowledge and contain its 
-                    floated children.
-                <ul>
+                created a block formatting context that forces the parent container to acknowledge and contain its 
+                floated children.
+            </p>
+            
+            <ul>
                 <li><strong>Issue 2: Inconsistent Padding Accumulation:</strong> The template applied <code>24px</code> 
                     bottom padding to every <code>&lt;p&gt;</code> tag via <code>#contents p</code>. The original three 
                     static entries each had two paragraph tags, creating consistent spacing. However, new database entries 
                     with different description lengths accumulated different amounts of padding, resulting in uneven visual 
                     rhythm.</li>
-                </ul>
+            </ul>
+            
+            <p style="margin-left: 20px;">
                 <strong>Solution:</strong> Removed the paragraph-level bottom padding and instead applied uniform <code>30px 
-                    padding-bottom</code> to the <code>#sites li</code> containers themselves, ensuring consistent spacing regardless 
-                    of content length or number of paragraphs.
+                padding-bottom</code> to the <code>#sites li</code> containers themselves, ensuring consistent spacing regardless 
+                of content length or number of paragraphs.
+            </p>
             
 
             <h4 style="margin-top: 40px;">Skills Demonstrated</h4>
