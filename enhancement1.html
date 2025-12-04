@@ -180,6 +180,20 @@
                     alt="Original trip layout with overlapping images"
                     style="max-width: 100%; height: auto; border: 1px solid #ddd; margin: 20px 0;">
             </div>
+
+            <p>I’m a huge fan of Material Design 3 principles, I’m no expert, but I like the idea of cleaning up an 
+                interface. My solution involved:</p>
+                        
+            <ul style="margin-left: 40px;">
+                <li><strong>Button Styling:</strong> Replaced Bootstrap defaults with Material 3 guidance through the CSS. 
+                    I added a higher radius (<code>8px</code>), subtle shadows, and letter-spacing for a polished look.</li>
+                <li><strong>Color Hierarchy:</strong> Primary actions (Edit/Add Trip) use solid blue buttons, while 
+                    destructive actions (Delete Trip) use outlined red buttons which mimic other professional designs 
+                    from other websites.</li>
+                <li><strong>Layout Consistency:</strong> I implemented flexbox across <code>trip-listing.css</code> and 
+                    <code>trip-card.css</code> to ensure equal card heights and bottom-aligned buttons, eliminating awkward 
+                    spacing caused by varying description lengths.</li>
+            </ul>
             
             <p>
                 The primary lesson was that designs optimized for static content often fail catastrophically 
