@@ -43,62 +43,56 @@
                 within the database. The artifact represents a full-stack solution with server-side 
                 rendering via Handlebars templates, RESTful API endpoints, and database integrations.  
             </p>
-        </section>
 
-        <section id="justification">
-            <h3>Justification for Inclusion</h3>
-            <p>
-                I selected this artifact because full-stack development represents the foundation of modern 
-                software engineering, integrating frontend, backend, databases, and deployment considerations. 
-                These skills are essential across industries—from logistics and healthcare to e-commerce and 
-                enterprise applications.
-            </p>
-            
             <h3>Picture of Trip Layout Before Enhancement:</h3>
             <div class="screenshot">
                 <img src="images/LayoutBefore.png"
                     alt="Original trip layout with overlapping images"
                     style="max-width: 100%; height: auto; border: 1px solid #ddd; margin: 20px 0;">
             </div>
-            
+        </section>
+
+        <section id="justification">
+            <h3>Justification for Inclusion</h3>
+            <p>
+                I selected this artifact for my ePortfolio because full-stack is considered the bread and 
+                butter of software engineering design. It branches out into other categories such as frontend, 
+                backend, databases, and GitHub collaboration or CI/CDs. Website, program, and database curation 
+                is needed in many different online facets. (Like Oil & Gas, Medical, Logistics, shipping, IT 
+                firms branching to mom&pops)
+            </p>
+        
             <h4>The Problem</h4>
             <p>
-                The original templates were designed for exactly three static travel destinations. When the 
-                application was converted to use dynamic content from MongoDB, a critical layout flaw emerged: 
-                adding more than three trips caused images to overlap separator lines, created inconsistent 
-                whitespace, and degraded the professional appearance of the interface.
-            </p>
-            <p>
-                Additionally, the Angular admin interface contained a typo (<code>btnbtn-danger</code> instead 
-                of <code>btn btn-danger</code>) that rendered the Delete button as an unstyled element, and the 
-                default Bootstrap styling appeared dated and unprofessional.
+                The original templates were designed for a static HTML with exactly three travel destinations. 
+                When the application was converted to use Handlebars templating and MongoDB for dynamic content 
+                and data addition / editing, a layout flaw in the website’s UI appeared, adding more than three 
+                trips to the database (because 3 was the original default amount) caused a visual problem, Images 
+                began overlapping with the separator lines and the white space between them was inconsistent, and 
+                the appearance lost professionality. 
             </p>
 
             <h4>The Solution</h4>
             <p>
-                Through systematic debugging and investigation of the CSS cascade, I identified and resolved 
-                multiple issues:
+                Through debugging, file searching, and general understanding of the full-stack environment, I 
+                identified a few CSS issues that caused this problem.
             </p>
-
-            <p><strong>Trip Display Fix:</strong></p>
             <ul>
-                <li><strong>Float Containment Failure:</strong> Images used <code>float: right;</code> but parent 
-                    <code>&lt;li&gt;</code> containers couldn't contain floated children, causing height collapse. 
-                    Solution: Added <code>overflow: hidden;</code> to create a block formatting context.</li>
-                <li><strong>Inconsistent Padding:</strong> Different content lengths accumulated different amounts 
-                    of padding. Solution: Moved padding from individual <code>&lt;p&gt;</code> tags to uniform 
-                    <code>30px padding-bottom</code> on <code>&lt;li&gt;</code> containers.</li>
-            </ul>
-
-            <p><strong>Admin Interface Redesign:</strong></p>
-            <ul>
-                <li>Fixed the button typo</li>
-                <li>Implemented Material Design 3 principles: increased border radius (8px), subtle shadows, 
-                    proper letter-spacing</li>
-                <li>Established color hierarchy: solid blue for primary actions (Edit/Add), outlined red for 
-                    destructive actions (Delete)</li>
-                <li>Applied flexbox layouts to ensure equal card heights and bottom-aligned buttons regardless 
-                    of description length</li>
+                <li><strong>Issue 1: Float Containment Failure:</strong> The images used <code>float: right;</code> 
+                    to position themselves, but the parent <code>&lt;li&gt;</code> containers couldn't properly contain 
+                    these floated children. This caused container height collapse and overlapping content as more items 
+                    were added.</li>
+                <li><strong>Solution:</strong> I added <code>overflow: hidden;</code> to <code>#sites li</code>, which 
+                    created a block formatting context that forces the parent container to acknowledge and contain its 
+                    floated children.</li>
+                <li><strong>Issue 2: Inconsistent Padding Accumulation:</strong> The template applied <code>24px</code> 
+                    bottom padding to every <code>&lt;p&gt;</code> tag via <code>#contents p</code>. The original three 
+                    static entries each had two paragraph tags, creating consistent spacing. However, new database entries 
+                    with different description lengths accumulated different amounts of padding, resulting in uneven visual 
+                    rhythm.</li>
+                <li><strong>Solution:</strong> Removed the paragraph-level bottom padding and instead applied uniform <code>30px 
+                    padding-bottom</code> to the <code>#sites li</code> containers themselves, ensuring consistent spacing regardless 
+                    of content length or number of paragraphs.</li>
             </ul>
 
             <h4>Skills Demonstrated</h4>
