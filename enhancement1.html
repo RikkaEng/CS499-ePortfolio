@@ -199,15 +199,59 @@
                     alt="Original trip layout with overlapping images"
                     style="max-width: 100%; height: auto; border: 1px solid #ddd; margin: 20px 0;">
             </div>
+
+            <h4>Course Outcomes</h4>
+            <ul style="margin-left: 40px;">
+                <li><strong>Outcome 2: Professional-Quality Visual Communication:</strong> I’ve demonstrated this through 
+                    the delivery of proper visual communications. The layout issues compromised the application’s professional 
+                    appearance, which would negatively impact user perception and organizational credibility. by ensuring consistent 
+                    visual presentation in both the button layout and database content, I’ve created a coherent, technical sound 
+                    interface that adapts appropriately to dynamic content. The before/after screenshots in this narrative demonstrate 
+                    my ability to document technical improvements in a visually clear manner for audiences.</li>
+                <li><strong>Outcome 4: Well-Founded Techniques, Skills & Tools:</strong> I employed things like CSS principles (block 
+                    formatting contexts, cascade, specificity) to diagnose root causes. Researched Material Design 3 standards. Implemented 
+                    scalable solutions that works regardless of database size, ensuring the application delivers values as content grows, 
+                    followed debugging best practices: hypothesis formation, systematic testing, and incremental changes, modern CSS layout 
+                    systems (flexbox for equal height cards), visual hierarchy (clear action differentiation). Adding tangible value by 
+                    making the interface more usable and professional looking. </li>
+                <li><strong>Outcome 3: Design and Evaluate Computing Solutions: :</strong> Was not the primary focus of this section, I focused 
+                    mostly on presentation layer improvements rather than algorithmic optimizations or security hardening. There were minimal 
+                    code changes, and the most extensive type of refactoring was the flexbox modernization with testing across the entire template. 
+                    The overflow method on the other hand provided some coding best practices because it provided a fix to an immediate problem while 
+                    maintaining compatibility with the existing codebase, and minimizing the risk of introducing new bugs, demonstrating my ability 
+                    to evaluate solutions using computer science best practices while managing real-world design constraints, but it’s not exactly 
+                    a core algorithm-based improvement. </li>
+            </ul>
+
+            <h4>Reflection</h4>
             
-            <p style="margin-top: 20px;">
-                The primary lesson was that designs optimized for static content often fail catastrophically 
-                when connected to dynamic databases. Scalable UI must be considered from the start or carefully 
-                retrofitted later. I learned how CSS cascades through component hierarchies in Angular—making 
-                buttons align properly required understanding how flexbox properties flow through multiple DOM 
-                levels: Bootstrap columns, Angular component wrappers, card containers, and card bodies. Missing 
-                any link in this chain broke the layout.
-            </p>
+
+                <p>
+                    <strong>What did I learn</strong> What I learned was some basic CSS and HTML tweaking and functionality. In terms of the trip 
+                    display problem, I learned that Static vs Dynamic template designs often fail when connected to databases, and scalable UI 
+                    implementations must be considered, whether or not they can be done so from the beginning or retrofitted later for the separate 
+                    Frontend Developer is another question. On the Button side however, my original implementation involved work that primarily focused 
+                    on backend perspectives, all the CRUD operations functioned correctly, but the interface had some problems that looked amateurish, 
+                    even including a single typo (btnbtn-danger) and used default colors from Bootstrap.
+                </p>
+            
+                <p>
+                    I learned how CSS cascades through component hierarchies in Angular. Making the card buttons align properly required understanding of 
+                    systems like flexbox properties needing to flow through multiple HTML levels: the Bootstrap column (col-md-4), the Angular component 
+                    wrapper (app-trip-card), the card container (.card), and finally the card body (.card-body). Missing any link in the chain broke the 
+                    layout. This taught me to think about DOM structure and style inheritance similar to how the trip display problem provided a spacing issue 
+                    that required understanding of paragraph padding rules defined by the site’s specific rules. Learning this process also allows me to find 
+                    out that my initial assumption that spacing issues were image-specific was incorrect. By testing hypotheses and tracing through the cascade, 
+                    I discovered the true problem was content-driven padding accumulation rather.
+                </p>
+                <p>
+                    I also learned about Material Design 3 during my android development course. The principles provide a foundational framework for making 
+                    design decisions rather than just guessing and copying blindly off of other popular designs. (even though M3 is a popular guide regardless). 
+                    Still though, understanding concepts like elevation (subtle shadows), visual hierarchy (solid vs. outlined buttons for primary vs. destructive actions), 
+                    and spacing systems made the enhancement process more intentional and defensible.
+                </p>
+            
+
             <p>
                 I also gained practical experience with Material Design 3 principles, which provided a framework 
                 for intentional design decisions rather than arbitrary aesthetic choices. Understanding concepts 
@@ -234,28 +278,6 @@
                 code and professional software.
             </p>
 
-            <h4>Course Outcomes Addressed</h4>
-            <p>
-                <strong>Outcome 2 - Professional-Quality Visual Communication:</strong> The layout issues 
-                compromised the application's professional appearance and organizational credibility. By ensuring 
-                consistent visual presentation across both customer and admin interfaces, I created a coherent, 
-                technically sound interface that adapts appropriately to dynamic content. The documented 
-                before/after improvements demonstrate my ability to communicate technical changes clearly.
-            </p>
-            <p>
-                <strong>Outcome 4 - Well-Founded Techniques, Skills & Tools:</strong> I employed established CSS 
-                principles (block formatting contexts, cascade, specificity) to diagnose root causes, researched 
-                and applied Material Design 3 standards, and implemented scalable solutions that function 
-                regardless of database size. The enhancement follows debugging best practices and delivers 
-                tangible value through improved usability and professionalism.
-            </p>
-            <p>
-                <strong>Outcome 3 - Design and Evaluate Computing Solutions:</strong> While this enhancement 
-                focused primarily on presentation layer improvements rather than algorithmic optimization, the 
-                overflow fix demonstrates evaluating solutions using computer science best practices while 
-                managing real-world design constraints. The solution addressed immediate problems while 
-                maintaining compatibility with the existing codebase and minimizing risk of introducing new bugs.
-            </p>
         </section>
     </main>
 
