@@ -164,9 +164,23 @@
                     style="max-width: 100%; height: auto; border: 1px solid #ddd; margin: 20px 0;">
             </div>
             
-            <h3>Reflection on the Enhancement Process</h3>
+            <h3>Another Problem:</h3>
+            <p>
+                I found another problem that started with a UI/UX problem. The Angular admin interface, started 
+                with a typo in trip-card.html where the Delete button used btnbtn-danger, which is a typo, it 
+                should be  btn btn-danger, so it rendered as a bland looking black-and-white square. Additionally, 
+                the default bootstrap btn-info turquoise comes off a bit ugly and there is even some unprofessional 
+                spacing resembling an early 2000s web design rather than anything even remotely modern. 
+            </p>
 
-            <h4>What I Learned</h4>
+            <h4>Angular Interface Before Enhancement:</h4>
+                        
+            <div class="screenshot">
+                <img src="images/AngularLayoutBefore.png"
+                    alt="Original trip layout with overlapping images"
+                    style="max-width: 100%; height: auto; border: 1px solid #ddd; margin: 20px 0;">
+            </div>
+            
             <p>
                 The primary lesson was that designs optimized for static content often fail catastrophically 
                 when connected to dynamic databases. Scalable UI must be considered from the start or carefully 
