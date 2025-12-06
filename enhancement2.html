@@ -105,6 +105,108 @@
           
         </section>
 
+        <section id="reflection">
+            <h3>Course Outcomes Achievement</h3>
+            <p>
+                I guess the enhancement leans directly to Outcome 3: “Design and evaluate computing solutions that solve a given problem using 
+                algorithmic principles and computer science practices and standards appropriate to its solution, while managing the trade-offs 
+                involved in design choices.”
+            </p>
+            <p>
+                The implementation of the search bar took part in several considerations in terms of algorithmic optimizations:
+            </p>
+            <ul>
+                <li>
+                    <strong>Space vs. Time Complexity:</strong>Adding indexes increases storage requirements but dramatically improves query 
+                    search time complexity.
+                </li>
+                <li>
+                    <strong>Precision vs. Recall:</strong>The text search prioritizes precision (exact word matches take priority), while the 
+                    regex fallback prioritizes recall (catching when only part of the word is typed) This hybrid approach balances both concerns 
+                    in terms of finding the right trip type with search results.
+                </li>
+                <li>
+                    <strong>Server-Side vs. Client-Side: </strong>I chose server-side search to leverage database indexes rather than client-side 
+                    JavaScript filtering, which would require loading all data upfront and wouldn’t scale well with larger datasets, but I can 
+                    easily change that if the website ends up needing to pull from a lot of sources.
+                </li>
+            </ul>
+
+            <h3>Reflections:</h3>
+
+            <p>
+                The process of implementing this search functionality taught me several lessons about practical algorithms and data structures:
+            </p>
+            <ul>
+                <li>
+                    <strong>Index Mechanics:</strong> Before this project, I had a surface-level understanding of database indexes but hadn’t 
+                    implemented them in a website before. Working through the implementation of MongoDB’s indexing gave me some experience in 
+                    how text indexes function differently from single-field indexes, and why the order of fields in compound indexes matters for 
+                    query optimization. I also learned that MongoDB’s text indexes use an inverted index data structure, which is standard for 
+                    search engines.
+                </li>
+                <li>
+                    <strong>Algorithmic Thinking in API Design:</strong> In this endeavor I had to consider common edge cases like empty search 
+                    queries, special characters, and how to handle the case where neither search method returns results. The solution of checking 
+                    for an empty search term first, then trying text search, then falling back to regex, demonstrates a decision tree algorithm that 
+                    optimizes for the most common cases first. 
+                </li>
+                <li>
+                    <strong>Integration Challenges:</strong> A significant technical challenge was ensuring the search functionality integrated 
+                    seamlessly with the existing Handlebars pipeline. The original controller fetched all trips from a single endpoint; I had to modify 
+                    it to conditionally route to either the standard list endpoint or the new search endpoint based on query parameters. This required 
+                    understanding how Express routing works and how to pass state (the search term) from the controller to the template without breaking 
+                    the existing flow.
+                </li>
+                <li>
+                    <strong>Security Considerations: </strong>Implementing regex searches introduced potential security concerns. Regex patterns can be 
+                    exploited for a DOS attack through backtracking. I mitigated this by using simple patterns matching with the $regex operator rather 
+                    than complex regex patterns, and by limiting searches to specific field rather than arbitrary user-supplied regex. This demonstrates 
+                    my developing security mindset when implementing data structure operations. 
+                </li>
+                <li>
+                    <strong>UI/UX and Algorithm Interaction:</strong> UI also plays a part in algorithmic requirements. I planned to implement search as 
+                    a client-side filter, but realized this would prevent leveraging database indexes. The decision to use server-side search with page 
+                    reloads (rather than AJAX) was driven by consistency with the existing architecture, but it also simplified the algorithmic requirements 
+                    since we don’t need real-time filtering.
+                </li>
+            </ul>
+
+
+            <h3>Summary of Technical / Coding Changes: </h3>
+            <ul>
+                <li>
+                    <strong>Schema Layer</strong> (<code>app_api/models/travlr.js</code>) I added index definitions to the Mongoose schema, including text indexes 
+                    for full-text search capabilities.
+                </li>
+                <li>
+                    <strong>Controller Layer</strong> (<code>app_api/controllers/ trips.js</code>): Implemented the tripsSearch function that executes the two-tier 
+                    search algorithm, handling both text search and regex fallback with appropriate error handling
+                </li>
+                <li>
+                    <strong>Routing Layer</strong> (<code>app_api/routes/index.js</code>): added the /trips/search route before the /trips/:tripcode route to ensure 
+                    proper route matching.
+                </li>
+                <li>
+                    <strong>Server Controller Layer</strong> (<code>app_server/controllers/travel.js</code>): Modified the travel controller to detect search query 
+                    parameters and route requests to the appropriate API endpoint.
+                </li>
+                <li>
+                    <strong>View Layer</strong> (<code>app_server/views/</code>): Created a reusable search partial in Handlebars and integrated it into the travel 
+                    template with proper state management for displaying the active search term.
+                </li>
+            </ul>
+
+            <h3>Conclusion:</h3>
+
+            <p>
+                This enhancement successfully demonstrates my competency in algorithms and data structures through the practical application of indexing strategies, a
+                search algorithms, and query optimization techniques. The project reinforced that effective use of algorithms and data structures isn’t just about 
+                implementing textbook solutions, it’s about understanding the trade-offs, considering the scale of the problem, and integrating solutions seamlessly 
+                into existing systems while maintaining security and performance standards.
+            </p>
+                            
+        </section>
 
     </main>
     <footer>
