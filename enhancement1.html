@@ -226,62 +226,58 @@
             <h4>Reflection</h4>
             
                 <p>
-                    <strong>What did I learn</strong> What I learned was some basic CSS and HTML tweaking and functionality. In terms of the trip 
-                    display problem, I learned that Static vs Dynamic template designs often fail when connected to databases, and scalable UI 
-                    implementations must be considered, whether or not they can be done so from the beginning or retrofitted later for the separate 
-                    Frontend Developer is another question. On the Button side however, my original implementation involved work that primarily focused 
-                    on backend perspectives, all the CRUD operations functioned correctly, but the interface had some problems that looked amateurish, 
-                    even including a single typo (btnbtn-danger) and used default colors from Bootstrap.
+                    <strong>What did I learn:</strong> What I learned was some basic CSS and HTML tweaking and functionality. In terms of the trip display problem, 
+                    I learned that Static vs Dynamic template designs often fail when connected to databases, and scalable UI implementations must 
+                    be considered, whether or not they can be done so from the beginning or retrofitted later for the separate Frontend Developer is 
+                    another question. On the Button side however, my original implementation involved work that primarily focused on backend perspectives, 
+                    all the CRUD operations functioned correctly, but the interface had some problems that looked amateurish, even including a single typo 
+                    (btnbtn-danger) and used default colors from Bootstrap.
                 </p>
             
                 <p>
                     I learned how CSS cascades through component hierarchies in Angular. Making the card buttons align properly required understanding of 
                     systems like flexbox properties needing to flow through multiple HTML levels: the Bootstrap column (col-md-4), the Angular component 
-                    wrapper (app-trip-card), the card container (.card), and finally the card body (.card-body). Missing any link in the chain broke the 
-                    layout. This taught me to think about DOM structure and style inheritance similar to how the trip display problem provided a spacing issue 
-                    that required understanding of paragraph padding rules defined by the site’s specific rules. Learning this process also allows me to find 
-                    out that my initial assumption that spacing issues were image-specific was incorrect. By testing hypotheses and tracing through the cascade, 
-                    I discovered the true problem was content-driven padding accumulation rather.
+                    wrapper (app-trip-card), the card container (.card), and finally the card body (.card-body). Missing any link in the chain broke the layout. 
+                    This taught me to think about DOM structure and style inheritance similar to how the trip display problem provided a spacing issue that required 
+                    understanding of paragraph padding rules defined by the site’s specific rules. Learning this process also allows me to find out that my initial 
+                    assumption that spacing issues were image-specific was incorrect. By testing hypotheses and tracing through the cascade, I discovered the true 
+                    problem was content-driven padding accumulation rather.
                 </p>
-                <p>
-                    I also learned about Material Design 3 during my android development course. The principles provide a foundational framework for making 
-                    design decisions rather than just guessing and copying blindly off of other popular designs. (even though M3 is a popular guide regardless). 
-                    Still though, understanding concepts like elevation (subtle shadows), visual hierarchy (solid vs. outlined buttons for primary vs. destructive actions), 
-                    and spacing systems made the enhancement process more intentional and defensible.
-                </p>
-            
 
-            <p>
-                I also gained practical experience with Material Design 3 principles, which provided a framework 
-                for intentional design decisions rather than arbitrary aesthetic choices. Understanding concepts 
-                like elevation, visual hierarchy, and spacing systems made the enhancement process more defensible 
-                and professional.
-            </p>
+                <p>
+                    I also learned about Material Design 3 during my android development course. The principles provide a foundational framework for making design 
+                    decisions rather than just guessing and copying blindly off of other popular designs. (even though M3 is a popular guide regardless). Still though, 
+                    understanding concepts like elevation (subtle shadows), visual hierarchy (solid vs. outlined buttons for primary vs. destructive actions), and spacing 
+                    systems made the enhancement process more intentional and defensible.
+                </p>
 
             <h4>Challenges Faced</h4>
             <p>
-                The primary technical challenge was overriding Bootstrap's opinionated defaults without affecting 
-                other parts of the application. Custom styles needed careful specificity management to take 
-                precedence appropriately.
+                the primary technical challenge was overriding Bootstrap’s opinionated defaults. It wasn’t really a hard challenge but utility classes (btn-info, btn-danger) 
+                come with built-in styling that I wanted to override without affecting other parts of the application. I had to learn CSS on the fly, since I didn’t cover it 
+                at all during the course, but it was critical to ensure my custom styles took precedence.
             </p>
+
             <p>
-                The card alignment issue proved particularly frustrating—conceptually simple (make cards the same 
-                height) but technically complex due to nested container behavior. Buttons floated wherever 
-                description text ended, requiring coordinated CSS changes in both <code>trip-listing.css</code> 
-                and <code>trip-card.css</code>.
+                The card alignment issue was particularly frustrating because the solution seemed simple conceptually (just make them the same height) but, I ended up just 
+                using a flexbox to distribute space across nested containers. The buttons weren’t anchored to the card itself – they floated wherever the description text ended 
+                which had varying lengths. Solving this required CSS in both trip-listing.css (for the column layout) and trip-card.css (for the card internals), which wasn’t 
+                immediately obvious.
             </p>
+
             <p>
-                There was also a learning curve in articulating <em>why</em> design choices matter beyond 
-                aesthetics. Inconsistent button placements create cognitive friction for users scanning multiple 
-                cards. Recognizing and addressing these UX concerns represents the difference between functional 
-                code and professional software.
+                Finally, there was a learning curve in articulating why certain design choices even mattered. It’s one thing to notice whether or not something looks awkward, 
+                but another is to understand if it might look awkward or hard to decern to others. Inconsistent button placements create some cognitive friction for users who 
+                need to scan multiple cards quickly. This enhancement will fix that I believe, while I don’t have access to other opinions or test runs, it’s considered common 
+                practice in most frontend development sectors who balance aesthetics, usability, and technical implementation.  
             </p>
+            
 
         </section>
     </main>
 
     <footer>
-        <p>© 2024 Rikka Eng | <a href="https://github.com/[your-username]">GitHub</a></p>
+        <p>© 2024 Rikka Eng | <a href="https://github.com/RikkaEng/CS499-ePortfolio">GitHub</a></p>
     </footer>
 </body>
 </html>
