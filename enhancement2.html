@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhancement 1 - Rikka Eng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Rikka Eng</h1>
+        <h2>Computer Science ePortfolio</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="code-review.html">Code Review</a>
+            <a href="enhancement1.html">Enhancement 1: Software Design & Engineering</a>
+            <a href="enhancement2.html">Enhancement 2: Algorithms & Data Structures</a>
+            <a href="enhancement3.html">Enhancement 3: Databases</a>
+        </nav>
+    </header>
+    <main>
+        <section id="enhancement-header">
+            <h2>Enhancement Two: Algorithms and Data Structure</h2>
+            <div class="artifact-links">
+                <h3>Artifact Files</h3>
+                <ul>
+                    <li><a href="artifacts/enhancement2-narrative.docx" download>📄 Download Original Milestone Word Document</a></li>
+                    <li><a href="https://github.com/RikkaEng/CS465-travlr/tree/capstoneEnhancement" target="_blank">💻 View Full Project Code on GitHub</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="artifact-description">
+            <h3>Artifact Description</h3>
+            <p>
+                The artifact I selected for the Algorithms and Data Structure category is still the Travlr Getaways, full-stack 
+                travel booking application, which I originally developed in CS 465 (Full Stack Development I) last semester. Again, 
+                Travlr Getaways is a MEAN stack application consisting of a customer-facing website built with Express and Handlebars, 
+                a RESTful API powered by Node.js and MongoDB, and an Angular-based administrative single-page application for managing 
+                trip listings.
+            </p>
+
+            <p>
+                last week I added improvements to the UI removing several glitches and poor UI quality, now I’m working on the algorithms 
+                part, it consisted of basic CRUD operations for trip management, user authentication with JWT tokens, and server-side rendering 
+                for the customer-facing pages. However, it lacked any search or filtering capabilities, forcing users to manually scroll through 
+                all available trips to find destinations matching their interests. 
+            </p>
+        </section>
+
+        <section id="justification">
+            <p>
+                I selected this artifact because it provided a great opportunity to demonstrate my understanding of data structures and algorithm 
+                optimization through the implementations of database indexing and search algorithms. The enhancement involved several things that 
+                I’ve done in terms of algorithms and data structures:
+            </p>
+
+            <ul style="margin-left: 40px;">
+              <li>
+                <strong>•	Database Indexing Strategy:</strong> I implemented an indexing strategy on MongoDB collections to optimize query 
+                performance. Specifically, I added single-field indexes on the ‘code’ and ‘name’ fields, along with a text index spanning the 
+                ‘nabe’, ‘resort’ and description fields. With this I’m able to show that I understand how Binary-search-trees (which MongoDB 
+                uses for indexes) can reduce / optimize query time complexity from O(n) to O(log n).
+              </li>
+              <li>
+                <strong>Search Algorithm Implementation:</strong> The search system utilizes two different algorithm approaches. The primary 
+                one is MongoDB’s text search algorithm, which leverages the text index to perform full text searches with word stemming and 
+                word relevance. When text search returns no results, the system falls back to a regex-based pattern matching algorithm that 
+                searches across multiple fields using OR operations. This fallback ensures that it works similar to other search systems so 
+                like for example (if “reef” is typed it populates things with “reef” in it like “Dawson’s Reefs”).
+              </li>
+              <li>
+                <strong>Query Optimization:</strong> The search endpoint demonstrates algorithmic thinking in how queries are structured. Rather 
+                than retrieving all documents and filtering in application code, the search pushes filtering logic to the database layer where 
+                indexes can be leveraged. The API endpoint also implements relevance scoring through MongoDB’s $meta:”textScore” functionality, 
+                sorting results by relevance rather than arbitrary order.
+              </li>
+            </ul>
+
+          <h3>Search Bar With Empty Search Input:</h3>
+            <div class="screenshot">
+                <img src="images/SearchBarEmpty.png"
+                    alt="Original trip layout with overlapping images"
+                    style="max-width: 100%; height: auto; border: 1px solid #ddd; margin: 20px 0;">
+            </div>
+          
+        </section>
+
+
+    </main>
+    <footer>
+        <p>© 2024 Rikka Eng | <a href="https://github.com/RikkaEng/CS499-ePortfolio">GitHub</a></p>
+    </footer>
+
+</body>
+</html>
