@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhancement 1 - Rikka Eng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Rikka Eng</h1>
+        <h2>Computer Science ePortfolio</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="code-review.html">Code Review</a>
+            <a href="enhancement1.html">Enhancement 1: Software Design & Engineering</a>
+            <a href="enhancement2.html">Enhancement 2: Algorithms & Data Structures</a>
+            <a href="enhancement3.html">Enhancement 3: Databases</a>
+        </nav>
+    </header>
+    <main>
+        <section id="enhancement-header">
+            <h2>Enhancement Three: Databases</h2>
+            <div class="artifact-links">
+                <h3>Artifact Files</h3>
+                <ul>
+                    <li><a href="artifacts/enhancement3-narrative.docx" download>📄 Download Original Milestone Word Document</a></li>
+                    <li><a href="https://github.com/RikkaEng/CS465-travlr/tree/capstoneEnhancement" target="_blank">💻 View Full Project Code on GitHub</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="artifact-description">
+        <h3>Artifact Descripiton</h3>
+          <p>
+            The artifact I’ve selected for the database enhancement (enhancement three) is still the Travlr Getaways application 
+            (i.e. MEAN-stack with MongoDB, Express, Angular, and Node). The project was still developed initially last semester in 
+            CS-465 Full Stack Development last semester as an introduction to full-stack development. 
+          </p>
+          <p>
+            In this enhancement I’ve inspected the database operations and to list them, it uses MongoDB with Mongoose ODM, featuring 
+            CRUD functionality for trip management, user authentication with JWT tokens, and a search system for filtering travel 
+            packages.
+          </p>
+        </section>
+
+      <section id="justification">
+        <h3>Justification for Inclusion</h3>
+        <p>
+          I’m still choosing this artifact because it provides a diverse set of scenarios that can be reused for all of the proposed 
+          enhancement, implementing database security measures in this case can be done via handling user data, or within the database 
+          itself. The original implementation was functional, but it had several vulnerabilities that were exploitable in early-stage applications: 
+          there was a lack of input sanitizations and no validation methods against NoSQL injection attacks, and insufficient data integrity enforced. 
+        </p>
+        <h4>What I did Specifically:</h4>
+        <ul style="margin-left: 40px;">
+          <li>
+            <strong>NoSQL Injection Sanitization:</strong> I Implemented the express-mongo-sanitize middleware throughout the application. This 
+            addresses a critical security vulnerability where malicious users could manipulate database queries by injection MongoDB operations 
+            (like $ne, $gt, $where) through user input. The middleware automatically strips these operators from incoming requests before they reach 
+            the database layer.
+          </li>
+          <li>
+            <strong>Regex Injection Protection: </strong> The search function also had a vulnerability because it used user inputs directly and that’s 
+            not ideal for MongoDB regex queries. I added a validation check to avoid malicious stuff like DOS attacks or corrupted query behavior.
+          </li>
+          <li>
+            <strong>Schema Validation: </strong> At first, I messily added another method into the controller but felt I could reduce the amount of 
+            spaghetti code, and opted to instead enhance the Mongoose schema to enforce data integrity within itself. It’s basically separation of 
+            concerns; the controller should focus on request/response handling, and the schema cannot only just be the structure of the data but now 
+            includes:
+          </li>
+              <ul style="margin-left: 20px;">
+                <li>Type Enforcement (converting perPerson from a String to a Number)</li>
+                <li>Required field validation with custom error messages</li>
+                <li>Maximum length constraints to prevent database bloat</li>
+                <li>Minimum value constraints for numeric fields</li>
+                <li>Automatic whitespace trimming</li>
+                <li>Unique constraints on trip codes</li>
+              </ul>
+        </ul>
+          
+      </section>
+      
+      
+
+
+    </main>
+    <footer>
+        <p>© 2024 Rikka Eng | <a href="https://github.com/RikkaEng/CS499-ePortfolio">GitHub</a></p>
+    </footer>
+
+</body>
+</html>
