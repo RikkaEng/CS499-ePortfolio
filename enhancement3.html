@@ -68,13 +68,16 @@
             <strong>Regex Injection Protection: </strong> The search function also had a vulnerability because it used user inputs directly and that’s 
             not ideal for MongoDB regex queries. I added a validation check to avoid malicious stuff like DOS attacks or corrupted query behavior.
           </li>
+            <p>
+                <code>const sanitizedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');</code>
+            </p>
           <li>
             <strong>Schema Validation: </strong> At first, I messily added another method into the controller but felt I could reduce the amount of 
             spaghetti code, and opted to instead enhance the Mongoose schema to enforce data integrity within itself. It’s basically separation of 
             concerns; the controller should focus on request/response handling, and the schema cannot only just be the structure of the data but now 
             includes:
           </li>
-              <ul style="margin-left: 30px;">
+              <ul style="margin-left: 40px;">
                 <li>Type Enforcement (converting perPerson from a String to a Number)</li>
                 <li>Required field validation with custom error messages</li>
                 <li>Maximum length constraints to prevent database bloat</li>
@@ -85,9 +88,104 @@
         </ul>
           
       </section>
-      
-      
+        <section id="reflection">
+            <h2>Reflection on Enhancement Process:</h2>
+            <h3>What I Learned:</h3>
+            <p>
+                I learned some insight from this enhancement, embarrassingly I came across a conundrum in the distinction between sanitization and validation. 
+                I initially assumed that MongoDB’s sanitization installed application was an all-in-one security solution, but learned that it specifically 
+                addressed NoSQL injections by removing dangerous operators. Input validation serves a different purpose, ensuring data quality and business 
+                logic compliance. Modern applications need both layers working together.
+            </p>
+            <p>
+                I also gained practical experience with Mongoose schema validation, which I had used superficially in the original project. Moving validation 
+                logic from controllers to the schema significantly reduced code duplication and made the application more maintainable. The automatic enforcement 
+                of validation rules means that any future code paths that save or update trips will benefit from these safeguards without additional implementation 
+                work. 
+            </p>
+            <h3>Challenges:</h3>
+            <p>
+                A small hiccup I ran into was the initial implementation of input validation; it broke the Angular admin interface. Trips would no longer display after 
+                attempting to add new ones. I went back to my initial changes, and mainly looked at tripAddTrips in app_api/controllers/trip.js, which I assumed is where 
+                the problem started since this only occurred after I attempted to add a trip. Through some trial and error (I assumed the newly added validators were 
+                the problem so I commented them out) and found that the application was now working, my validators were clearly causing a problem. I assumed my validation 
+                rules were too strict, retracting legitimate data from the Angular forms because some optional fields were being sent as empty strings rather than 
+                undefined values. I went for more reasonable values:
+            </p>
+            <ul style="margin-left: 40px;">
+                <li>
+                    Optional fields that might be empty strings
+                </li>
+                <li>
+                    Numbers that might be sent as strings from forms
+                </li>
+                <li>
+                    Distinguishing between “missing required data” and “data in wrong format”
+                </li>
+            </ul>
 
+            <h3>Course OUtcomes:</h3>
+            <p>
+                <strong>Outcome 1 – Collaborative Environments: </strong>Not directly addressed in this enhancement. While the implementation follows industry-standard practices 
+                that would facilitate team collaboration (clear code structure, separation of concerns), this artifact doesn not demonstrate specifc collaborative workflows, 
+                stakeholder communication, or decision documentation. This outcome is better addressed through my code review process and ePortfolio presentation as a whole.
+            </p>
+            <p>
+                <strong>Outcome 2 - Professional Communication</strong>Partially addressed through this assignment, which demonstrates my ability to explain technical security 
+                implementations in clear, accessible language appropriate for both technical and non-technical audiences. The narrative balances technical precision (explaining 
+                NoSQL injection mechanics) with readability (using analogies like “layered defenses”). However, the artifact itself does not include extensive visual documentation 
+                or stakeholder-facing communication materials.
+            </p>
+            <p>
+                <strong>Outcome 3 – Algorithmic Solutions: </strong>Not directly addressed in this enhancement. While the search functionality uses regex pattern matching, the focus 
+                of this enhancement was on security and data integrity rather than algorithmic optimization or complexity analysis. The enhancements prioritized correctness and security 
+                over performance trade-offs. This outcome is better demonstrated in my algorithms and data structures artifacts.
+            </p>
+            <p>
+                <strong>Outcome 4 – Techniques, Skills & Tools:</strong> The main thing addressed, I demonstrated the use of well-known techniques:
+            </p>
+            <ul style="margin-left: 40px;">
+                <li>
+                    <strong>Tools: </strong>I implemented express-mongo-sanitize middleware leveraged Mongoose ODM’s built-in validation system.
+                </li>
+                <li>
+                    <strong>Techniques: </strong>I applied separation of concerns (initially I made an extra method in the controllers folder, which created some bloated spaghetti code, 
+                    so I moved the validation methods straight to the schema folder), and implemented defense-in-debth security, used proper error handling patterns.
+                </li>
+                <li>
+                    <strong>Best Practices: </strong>Followed OWASP guidelines for preventing NoSQL injections, implemented input validation consistent with database design standards.
+                </li>
+            </ul>
+            <p>
+                <strong>Outcome 5 - Security Mindset:</strong> Also mainly addressed, the enhancement explicitly focused on anticipating and mitigating adversarial exploits:
+            </p>
+            <ul <ul style="margin-left: 40px;">
+                <li>
+                    Identified NoSQL injection vulnerabilities where attackers could manipulate queries using operators like $ne or $gt.
+                </li>
+                <li>
+                    Recognized regex injection attack vector in the search functionality.
+                </li>
+                <li>
+                    Implemented multiple layers of defense (sanitization middleware, input validation, schema constraints)
+                </li>
+                <li>
+                    Applied secure error handling that provides useful feedback without leaking system information.
+                </li>
+                <li>
+                    Followed the principle of least privilege by validating all user inputs before database operations.
+                </li>
+            </ul>
+
+            <h3>Summary</h3>
+            <p>
+                In this enhancement I added a few security features to a functional MEAN-stack application, removing various vulnerabilities: Middleware sanitizations, controller 
+                validation, and schema enforcement, where multiple security mechanisms work together rather than relying on a single point of protection. I also cleaned up the code a 
+                bit, with validation logic properly separated from business logic and placed into the schema, also makes the application more maintainable and easier to extend in the 
+                future. 
+            </p>
+            
+        </section>
 
     </main>
     <footer>
