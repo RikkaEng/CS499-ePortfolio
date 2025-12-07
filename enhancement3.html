@@ -89,8 +89,8 @@
           
       </section>
         <section id="reflection">
-            <h2>Reflection on Enhancement Process:</h2>
-            <h3>What I Learned:</h3>
+            <h3>Reflection on Enhancement Process:</h3>
+            <h4>What I Learned:</h4>
             <p>
                 I learned some insight from this enhancement, embarrassingly I came across a conundrum in the distinction between sanitization and validation. 
                 I initially assumed that MongoDB’s sanitization installed application was an all-in-one security solution, but learned that it specifically 
@@ -103,7 +103,7 @@
                 of validation rules means that any future code paths that save or update trips will benefit from these safeguards without additional implementation 
                 work. 
             </p>
-            <h3>Challenges:</h3>
+            <h4>Challenges:</h4>
             <p>
                 A small hiccup I ran into was the initial implementation of input validation; it broke the Angular admin interface. Trips would no longer display after 
                 attempting to add new ones. I went back to my initial changes, and mainly looked at tripAddTrips in app_api/controllers/trip.js, which I assumed is where 
