@@ -24,12 +24,165 @@
     <main>
         <section id="self-assessment">
             <h2>Professional Self-Assessment</h2>
-            <p>[Your self-assessment content here]</p>
         </section>
 
-        <section id="portfolio-overview">
-            <h2>Portfolio Overview</h2>
-            <p>[Brief intro to your artifacts and enhancements]</p>
+        <section id="introduction">
+            <h3>Intro</h3>
+            <p>
+                Completing Computer Science at Southern New Hampshire has honestly felt like a much-needed introduction to the field. I feel 
+                like I’ve only scratched the surface, which is indicative to how I felt when I graduated from The University of Texas in San 
+                Antonio with a Mechanical Engineering degree, the only difference is that I have more motivation to dig deep into the field, as 
+                I find computers, modern technology, software-based problem solving to be more inline with my creative interests and analytical 
+                strengths. 
+            </p>
+        </section>
+
+        <section id="collaboration">
+            <h3>Collaboration and Stakeholder Communication</h3>
+            <p>
+                On the coding side throughout the program, I’ve gained a consistent narrative amongst many instructors and tutors, that I should 
+                prioritize writing code with clear, contextual comments, not just for my future self, but for the potential that anyone else who 
+                might read my code might later want to understand it. I’ve learned that good commenting and method naming isn’t about explaining 
+                what the code does, but rather explaining in a way that’s easy to digest, quick, and easy to familiarize and navigate. 
+            </p>
+            <p>
+                the course has also invested time into having me familiarize myself with GitHub’s collaborative features, Pages for portfolio 
+                hosting, Copilot for assisted development, branch management, and pull request workflows, even though I haven’t yet used these 
+                in team contexts, I at least understand the tools and can conceptualize collaborative efforts that can be integrated into 
+                development between teams effectively.
+            </p>
+            <p>
+                Overall, however I intend to prepare for collaborative environments by studying real-world documentation practices. I’ve begun 
+                analyzing publicly available projects and codebases from companies in my area that are actively hiring on Indeed, examining 
+                their documentation styles, code comment structures, and architectural decision records. My goal is to familiarize myself with 
+                industry-standard practices before entering professional settings. While I lack extensive team collaboration experience currently, 
+                I’ve considered the steps that need to be taken to ensure I can contribute effectively to collaborative codebases when the 
+                opportunity arises.  
+            </p>
+        </section>
+
+        <section id="Data S+A">
+            <h3>Data Structures and Algorithms:</h3>
+            <p>
+                My understanding of algorithms was primarily done through the course CS-255 System Analysis and Design, it was where Big O notation, 
+                tree structures, and search algorithms was introduced. I only studied it on a surface level, and was only able to apply it to 
+                practical applications like simple database retrieval methods and my personal Travlr Getaway MEAN-stack project that I did in my 
+                full-stack course via MongoDB text indexes implementations to optimize queries from an O(n) to Log( n) complexity. 
+            </p>
+            <p>
+                I’m aware that simply knowing binary search trees and hash tables exist is just a first step, what matters more is understanding why 
+                they’re useful, like outside of the curriculum I discovered bitmasking as a strong solution for managing multiple Boolean flags 
+                effectively.
+            </p>
+            <p>
+                bitmasking is a strategy to manage multiple true/false states in a optimized way. For example, in a video game with user permissions 
+                like (canEdit, canDelete, isAdmin), traditional implementations might store four separate Boolean fields for the permission table, but 
+                bitmasking can do all four stages with a single integer: like the file can be stored as 0b1010, which would loosely translate to 
+                canEdit=true, canDelete=false, canShare=true, isAdmin=false. Or in other words, checking a permission becomes a simple O(1) operation 
+                because it’s just scanning the location and binary option (0 or 1) or the string.
+            </p>
+            <p>
+                This technique would be particularly valuable in systems handling real-time state updates, such as multiplayer game servers tracking 
+                thousands of player states simultaneously, or role-based access control systems where permission checks occur on every API request. 
+                The memory efficiency and computational speed of bitwise operations make them ideal for high-throughput scenarios where traditional 
+                boolean fields or relational lookups would create bottlenecks. While I haven't implemented bitmasking in production code yet, 
+                understanding these advanced optimization patterns demonstrates that effective algorithm design isn't just about implementing textbook 
+                solutions—it's about recognizing when unconventional approaches solve specific problems more elegantly.
+            </p>
+        </section>
+
+        <section id="Database Management">
+            <h3>Software Engineering and Database Management:</h3>
+            <p>
+                The MEAN stack project in my ePortfolio shows that my ability to work is serviceable. From server-side routing with Express and Node.js 
+                to frontend state management with Angular to database operations with MongoDB, I developed a familiarity and understanding of how modern 
+                web application function as overall.
+            </p>
+            <p>
+                Database management, in particular, required shifting my mindset from viewing databases as just data storage to understanding them as 
+                something that needs careful planning in terms of design optimizations, and security considerations. Implementing a Mongoose schema 
+                validation taught me that data integrity isn’t just about preventing bad data from entering the system, it’s about making invalid states 
+                impossible to present in the first place; by moving validation logic from controllers directly into schemas, I created a more maintainable 
+                architecture where industry standard rules are enforced consistently across all code paths. 
+            </p>
+            <p>
+                The frontend work taught me that software engineering extends beyond just backend logic. Solving the CSS layout issues in my admin interface 
+                required the same systematic debugging approach that would be required for any algorithmic problem: Forming predictions of future problems, 
+                testing incrementally, and understanding whether or not a system will be “future proofed”. This harkens to a concept of static-vs-dynamic 
+                content, and how a UI or a system of any kind would react to transitions in its data, whether its additions would introduce stability issues, 
+                with demonstrates foresight in potential problems. 
+            </p>
+        </section>
+
+        <section id="Security">
+            <h3>Security Mindset:</h3>
+            <p>
+                Security is supposed to be something that’s implemented into the system from the beginning, not bolted onto a project as an afterthought. 
+                This was something I learned after various enhancements focused around the subject.
+            </p>
+            <p>
+                Implementing NoSQL injection protection in the project required understanding of how such attacks even work. The express-mongo-sanitize 
+                middleware prevents attacks by stripping MongoDB operators (like $ or &) from user input, but understanding why this matters requires 
+                grasping how those commands / operators / attacks even work. Similarly, protecting against regex injection attacks meant recognizing that 
+                even seemingly innocuous features like search boxes can introduce vulnerabilities if not properly secured. 
+            </p>
+            <p>
+                The principle of defense-in-depth (implementing multiple security layers) rather than relying on a single safeguard is a reflection of 
+                common engineering practices. Sanitization middleware catches, injection attempts, schema validation ensures data integrity, and proper 
+                error handling prevents information leakage. No single measure if perfect, but common security practices build great muscle memory and 
+                general awareness of security measures and familiarity. 
+            </p>
+        </section>
+
+        <section id="Portfolio Enhancements">
+            <h3>Portfolio Integration and Technical Narrative:</h3>
+            <p>
+                The three enhancements in this ePortfolio demonstrate individual computer science competency principles across distinct domains in a single 
+                project, Travlr Getaways, proving that I can systematically improve existing systems across multiple dimensions. 
+            </p>
+            <ul style="margin-left: 40px;">
+                <li>
+                    <strong>Enhancement One: Software Design and Engineering:</strong> Demonstrates my attention to user experience and my ability to diagnose 
+                    and resolve frontend issues. I fixed a CSS layout problem and documented Material Design 3 principles, software development requires more 
+                    than just functional code, it demands interfaces that users can actually navigate effectively without having to deal with eye strain, 
+                    confusion, or tedious layouts.  The challenges I face, overriding Bootstrap defaults, managing CSS cascades across Angular component 
+                    hierarchies, illustrating problem-solving skills that translate beyond any specific framework.
+                </li>
+                <li>
+                    <strong>Enhancement Two: Algorithms and Data Structures:</strong> showcases my ability to optimize systems for performance and usability 
+                    simultaneously. Implementing text search with MongoDB indexing demonstrates understanding of how data structures affect application behavior 
+                    at scale. The two-tier search algorithm (text search with regex fallback) illustrates pragmatic algorithm design: using the optimal approach 
+                    when possible while maintaining flexibility for edge case. This enhancement proves I can translate theoretical computer science concepts 
+                    into practical performance improvement. 
+                </li>
+                <li>
+                    <strong>Enhancement Three: Databases and Security:</strong> reflects the security mindset that distinguishes professional-grade software 
+                    from academic projects. By implementing NoSQL injection protection, regex sanitization, and comprehensive schema validation, I demonstrated 
+                    the ability to anticipate and mitigate security vulnerabilities before they’re exploited. Moving validation logic from controllers to schemas 
+                    shows architectural maturity, understanding that good design makes entire categories of bugs impossible rather than just catching specific errors.
+                </li>
+            </ul>
+        </section>
+        <section id="Summary">
+            
+        <h3>Summary</h3>
+            <p>
+                Together, these enhancements tell a story on how I can build full-stack applications that are not only functional but also performant, maintainable, 
+                secure, and user-friendly. each enhancement addresses a different facet of professional software development, yet they all reinforce the same core 
+                principle of quality software requirements.
+            </p>
+            <p>
+                As I transition from student to working the field, I the bigger showcase of this project is more in line with my ability to learn rapidly. I enjoy 
+                technology and approaching problems symmetrically. my interest in UI/UX design and frontend development makes a good candite for roles that require 
+                bridging technical implementations with user needs. I’m particularly drawn to work where I can apply my analytical thinking to improve how people 
+                interact with software whether that’s optimizing interface workflows implementing intuitive navigation systems, or solving complicated UX problems. 
+            </p>
+            <p>
+                In a way this ePortfolio isn’t so much an endpoint but a starting point instead, the skills demonstrated here isn’t mainly full stack development, 
+                algorithmic thinking, security consciousness, and user-centered design, but my continuation to evolve as I encounter and learn more about the field 
+                of computer science and technologies. What remain constant is my commitment to build software that solves real problems effectively, efficiently, and 
+                with proper collaboration and communication.
+            </p>
         </section>
     </main>
 
